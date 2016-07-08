@@ -1,9 +1,9 @@
 const webpack = require('webpack');
-const APP_DIR = './src';
+const APP_DIR = './assets';
 const APP_DEST = './public';
 
 module.exports = {
-    entry: './src/app.js',
+    entry: APP_DIR + '/app.js',
     output: {
         path: APP_DEST,
         filename: 'app.bundle.js',
