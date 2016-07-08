@@ -4,15 +4,26 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack -d --watch",
+    "build": "webpack"
   },
   "author": "Tyler Lee <tyler@tylerjameslee.com> (http://www.tylerjameslee.com/)",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^6.3.7",
     "babel-polyfill": "^6.9.1",
     "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.23.1",
+    "es6-promise": "^3.2.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "node-sass": "^3.8.0",
+    "postcss-loader": "^0.9.1",
+    "precss": "^1.4.0",
     "react": "^15.2.0",
     "react-dom": "^15.2.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
     "webpack": "^1.13.1"
   },
   "devDependencies": {

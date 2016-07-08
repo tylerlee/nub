@@ -1,4 +1,6 @@
+const autoprefixer = require('autoprefixer');
 const path = require('path');
+const precss = require('precss');
 const webpack = require('webpack');
 
 const PATHS = {
@@ -6,11 +8,13 @@ const PATHS = {
   build: path.join(__dirname, 'public')
 };
 
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 module.exports = {
-  entry: PATHS.app + '/app.js',
+  entry: [PATHS.app + '/js/index.js', PATHS.app + '/styles/app.scss'],
   output: {
     path: PATHS.build,
-    filename: 'app.bundle.js',
+    filename: 'index.bundle.js',
   },
   module: {
     loaders: [{
@@ -24,9 +28,18 @@ module.exports = {
       loader : 'babel'
     },
     {
-      test: /\.css$/,
-      loaders: ['style', 'css'],
+      test: /\.scss$/,
+      loaders: ['style', 'css', 'sass'],
       include: PATHS.style
+    },
+    {
+      test: /\.css$/,
+      loaders: ['style', 'css', 'postcss'],
+      include: PATHS.style
+    },
+    {
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract("style-loader", "css-loader")
     }]
   },
   plugins: [
@@ -38,5 +51,8 @@ module.exports = {
         comments: false,
       },
     }),
-  ]
+  ],
+  postcss: function () {
+    return [autoprefixer, precss];
+  }
 }
